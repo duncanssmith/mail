@@ -5,12 +5,11 @@ include('Mail/mime.php');
 
 $text = 'Text version of email';
 $html = '<html><body>HTML version of email</body></html>';
-$file = '/home/duncanssmith/Sites/rs_dev/Mailer.php';
+$file = '~duncansmith/Sites/mail/Mailer.php';
 $crlf = "\n";
-$hdrs = array(
-              'From'    => 'duncan@iting.com',
-              'Subject' => 'Test mime message'
-              );
+$headers['From']='duncan@iting.com';
+$headers['To']='duncanssmith@gmail.com';
+$headers['Subject'] = 'Test mime message - Subject';
 
 $mime = new Mail_mime(array('eol' => $crlf));
 
@@ -20,19 +19,19 @@ $mime->addAttachment($file, 'text/plain');
 
 // do not ever try to call these lines in reverse order
 // when using versions older than 1.6.0
-$body = $mime->get();
+//$body = $mime->get();
 // or in 1.6.0 and newer
-// $body = $mime->getMessageBody();
+$body = $mime->getMessageBody();
 
 #echo "\nHEADERS BEFORE+++++\n\n";
-#var_dump($hdrs);
-#$hdrs = $mime->txtHeaders($hdrs);
+#var_dump($headers);
+#$headers = $mime->txtHeaders($headers);
 #echo "\nHEADERS AFTER+++++\n\n";
-#var_dump($hdrs);
-#print_r($hdrs);
+#var_dump($headers);
+#print_r($headers);
 
 $mail =& Mail::factory('mail');
-$ret = $mail->send('duncanssmith@gmail.com', $hdrs, $body);
+$ret = $mail->send('duncanssmith@gmail.com', $headers, $body);
 #var_dump($ret);
 #print_r($ret);
 #var_dump($mail);

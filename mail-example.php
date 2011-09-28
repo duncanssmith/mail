@@ -1,4 +1,5 @@
 <?php
+
 include('Mail.php');
 
 $recipients = 'duncanssmith@gmail.com';
@@ -15,4 +16,5 @@ $params['sendmail_path'] = '/usr/sbin/sendmail';
 $mail_object =& Mail::factory('sendmail', $params);
 
 $mail_object->send($recipients, $headers, $body);
+
 ?> 
