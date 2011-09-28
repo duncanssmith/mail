@@ -7,8 +7,8 @@ $text = 'Text version of email';
 $html = '<html><body>HTML version of email</body></html>';
 $file = '~duncansmith/Sites/mail/Mailer.php';
 $crlf = "\n";
-$headers['From']='duncan@iting.com';
-$headers['To']='duncanssmith@gmail.com';
+$headers['From']="Duncan Smith Iting <duncan@iting.com>";
+$headers['To']='Duncan Smith Personal <duncanssmith@gmail.com>';
 $headers['Subject'] = 'Test mime message - Subject';
 
 $mime = new Mail_mime(array('eol' => $crlf));
